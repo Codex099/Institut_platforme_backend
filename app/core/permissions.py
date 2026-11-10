@@ -73,7 +73,7 @@ ROLE_PERMISSIONS: Dict[Role, Dict[str, Set[Action]]] = {
         "schedules": {Action.VIEW},
         "sessions": {Action.VIEW},
         "closure_days": {Action.VIEW},
-        "enrollments": {Action.VIEW, Action.CREATE, Action.UPDATE, Action.EXPORT},
+        "enrollments": {Action.VIEW, Action.CREATE, Action.UPDATE, Action.VALIDATE, Action.EXPORT},
         "documents": {Action.VIEW, Action.CREATE},
         "attendance": {Action.VIEW, Action.CREATE, Action.UPDATE},
         "payments": {Action.VIEW, Action.CREATE, Action.EXPORT},

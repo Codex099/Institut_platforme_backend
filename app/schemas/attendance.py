@@ -36,3 +36,4 @@ class AttendanceResponse(BaseModel):
 
     class Config:
         from_attributes = True
+

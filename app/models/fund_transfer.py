@@ -23,3 +23,4 @@ class FundTransfer(Base, TimestampMixin):
     sender = relationship("User", foreign_keys=[from_user_id])
     recipient = relationship("User", foreign_keys=[to_user_id])
     canceller = relationship("User", foreign_keys=[cancelled_by])
+

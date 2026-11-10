@@ -17,3 +17,4 @@ class UserPermissionResponse(UserPermissionItem):
 
     class Config:
         from_attributes = True
+

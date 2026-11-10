@@ -32,3 +32,4 @@ class ExpenseResponse(ExpenseBase):
 
     class Config:
         from_attributes = True
+

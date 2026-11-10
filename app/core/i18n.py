@@ -163,3 +163,4 @@ def t(key: str, lang: str = "en", **kwargs) -> str:
         except Exception:
             return msg
     return msg
+

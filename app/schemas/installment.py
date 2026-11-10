@@ -27,3 +27,4 @@ class InstallmentResponse(InstallmentBase):
 
     class Config:
         from_attributes = True
+

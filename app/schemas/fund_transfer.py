@@ -35,3 +35,4 @@ class FundTransferResponse(BaseModel):
 
     class Config:
         from_attributes = True
+

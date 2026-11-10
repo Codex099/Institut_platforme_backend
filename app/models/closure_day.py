@@ -17,3 +17,4 @@ class ClosureDay(Base, TimestampMixin):
 
     branch = relationship("Branch")
     creator = relationship("User", foreign_keys=[created_by])
+

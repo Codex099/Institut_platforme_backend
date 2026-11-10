@@ -16,3 +16,4 @@ class Setting(Base, TimestampMixin):
     )
 
     branch = relationship("Branch")
+

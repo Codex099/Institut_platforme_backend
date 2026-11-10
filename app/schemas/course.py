@@ -35,3 +35,4 @@ class CourseResponse(CourseBase):
 
     class Config:
         from_attributes = True
+

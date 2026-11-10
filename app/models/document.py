@@ -22,3 +22,4 @@ class Document(Base, TimestampMixin, SoftDeleteMixin):
     )
 
     uploader = relationship("User", foreign_keys=[uploaded_by])
+

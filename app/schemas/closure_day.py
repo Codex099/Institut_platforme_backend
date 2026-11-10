@@ -37,3 +37,4 @@ class ClosureDayResponse(ClosureDayBase):
 
     class Config:
         from_attributes = True
+

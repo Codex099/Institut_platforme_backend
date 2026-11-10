@@ -15,3 +15,4 @@ class ContactMessage(Base, TimestampMixin):
     status = Column(String(30), default="new", nullable=False, index=True)  # new, read, resolved
 
     branch = relationship("Branch")
+

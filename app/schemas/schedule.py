@@ -57,3 +57,4 @@ class ConflictItem(BaseModel):
 class CheckConflictResponse(BaseModel):
     has_conflict: bool
     conflicts: List[ConflictItem]
+

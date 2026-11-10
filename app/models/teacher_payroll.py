@@ -21,3 +21,4 @@ class TeacherPayroll(Base, TimestampMixin):
 
     teacher = relationship("Teacher", back_populates="payroll_records")
     branch = relationship("Branch")
+

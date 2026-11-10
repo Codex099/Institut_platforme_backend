@@ -18,3 +18,4 @@ class Expense(Base, TimestampMixin, SoftDeleteMixin):
     branch = relationship("Branch")
     creator = relationship("User", foreign_keys=[created_by])
     receipt_document = relationship("Document", foreign_keys=[receipt_document_id])
+

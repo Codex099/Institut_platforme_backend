@@ -35,3 +35,4 @@ class LevelResponse(LevelBase):
 
     class Config:
         from_attributes = True
+

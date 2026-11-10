@@ -36,3 +36,4 @@ class TimestampMixin:
 class SoftDeleteMixin:
     is_archived = Column(Boolean, default=False, nullable=False, index=True)
     archived_at = Column(DateTime(timezone=True), nullable=True)
+

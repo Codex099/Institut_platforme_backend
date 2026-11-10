@@ -34,3 +34,4 @@ class Enrollment(Base, TimestampMixin, SoftDeleteMixin):
     confirmer = relationship("User", foreign_keys=[confirmed_by])
     payments = relationship("Payment", back_populates="enrollment", cascade="all, delete-orphan")
     installments = relationship("Installment", back_populates="enrollment", cascade="all, delete-orphan")
+

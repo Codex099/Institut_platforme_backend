@@ -18,3 +18,4 @@ class Course(Base, TimestampMixin, SoftDeleteMixin):
 
     branch = relationship("Branch")
     levels = relationship("Level", back_populates="course", cascade="all, delete-orphan")
+

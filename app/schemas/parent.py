@@ -47,3 +47,4 @@ class StudentParentLinkResponse(BaseModel):
 
     class Config:
         from_attributes = True
+

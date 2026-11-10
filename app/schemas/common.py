@@ -21,3 +21,4 @@ class StatusResponse(BaseModel):
     code: str = "SUCCESS"
     message: str
     details: Optional[dict] = None
+

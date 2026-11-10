@@ -25,3 +25,4 @@ class ClassSession(Base, TimestampMixin):
     cancelled_by_user = relationship("User", foreign_keys=[cancelled_by])
     rescheduled_from = relationship("ClassSession", remote_side=[id], backref="rescheduled_to")
     attendances = relationship("Attendance", back_populates="session", cascade="all, delete-orphan")
+

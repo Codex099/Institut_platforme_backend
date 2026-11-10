@@ -62,3 +62,4 @@ class ClassSessionResponse(ClassSessionBase):
 
     class Config:
         from_attributes = True
+

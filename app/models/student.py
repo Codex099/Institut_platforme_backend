@@ -25,3 +25,4 @@ class Student(Base, TimestampMixin, SoftDeleteMixin):
     enrollments = relationship("Enrollment", back_populates="student", cascade="all, delete-orphan")
     parent_links = relationship("StudentParent", back_populates="student", cascade="all, delete-orphan")
     attendance_records = relationship("Attendance", back_populates="student")
+

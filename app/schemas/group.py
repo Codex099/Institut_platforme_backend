@@ -49,3 +49,4 @@ class GroupResponse(GroupBase):
 
     class Config:
         from_attributes = True
+

@@ -19,3 +19,4 @@ class ScheduleSlot(Base, TimestampMixin):
     group = relationship("Group", back_populates="schedule_slots")
     room = relationship("Room", back_populates="schedule_slots")
     teacher = relationship("Teacher", back_populates="schedule_slots")
+

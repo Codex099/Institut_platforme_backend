@@ -93,3 +93,4 @@ def get_current_user_payload(
     if not credentials or not credentials.credentials:
         raise AuthenticationError(message_key="auth_invalid_credentials")
     return decode_token(credentials.credentials, is_refresh=False)
+

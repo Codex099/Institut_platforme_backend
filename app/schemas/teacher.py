@@ -34,3 +34,4 @@ class TeacherResponse(TeacherBase):
 
     class Config:
         from_attributes = True
+

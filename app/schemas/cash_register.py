@@ -34,3 +34,4 @@ class CashMovementResponse(BaseModel):
 
     class Config:
         from_attributes = True
+

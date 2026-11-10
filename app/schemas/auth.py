@@ -34,3 +34,4 @@ class UserMeResponse(BaseModel):
     preferred_lang: str
     granted_branches: List[int] = []
     permissions: List[dict] = []
+

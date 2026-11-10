@@ -31,3 +31,4 @@ class CashMovement(Base, TimestampMixin):
 
     register = relationship("CashRegister", back_populates="movements")
     creator = relationship("User", foreign_keys=[created_by])
+

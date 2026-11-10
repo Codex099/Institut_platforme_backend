@@ -20,3 +20,4 @@ class Teacher(Base, TimestampMixin, SoftDeleteMixin):
     schedule_slots = relationship("ScheduleSlot", back_populates="teacher")
     sessions = relationship("ClassSession", back_populates="teacher")
     payroll_records = relationship("TeacherPayroll", back_populates="teacher", cascade="all, delete-orphan")
+

@@ -14,3 +14,4 @@ class Room(Base, TimestampMixin, SoftDeleteMixin):
     branch = relationship("Branch")
     schedule_slots = relationship("ScheduleSlot", back_populates="room")
     sessions = relationship("ClassSession", back_populates="room")
+

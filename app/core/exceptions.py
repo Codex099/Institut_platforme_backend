@@ -118,3 +118,4 @@ def register_exception_handlers(app: FastAPI):
                 "message": "An internal server error occurred. Please contact support." if lang == "en" else "حدث خطأ داخلي في الخادم. يرجى الاتصال بالدعم الفني.",
             },
         )
+

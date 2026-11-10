@@ -32,3 +32,4 @@ class BranchAccessGrant(Base, TimestampMixin):
 
     user = relationship("User", foreign_keys=[user_id], back_populates="branch_grants")
     branch = relationship("Branch", back_populates="access_grants")
+

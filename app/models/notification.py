@@ -15,3 +15,4 @@ class Notification(Base, TimestampMixin):
     read_at = Column(DateTime(timezone=True), nullable=True, index=True)
 
     user = relationship("User")
+

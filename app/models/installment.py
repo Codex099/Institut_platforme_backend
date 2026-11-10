@@ -13,3 +13,4 @@ class Installment(Base, TimestampMixin):
     status = Column(String(30), default="due", nullable=False, index=True)  # due, paid, late
 
     enrollment = relationship("Enrollment", back_populates="installments")
+

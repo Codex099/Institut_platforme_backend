@@ -16,3 +16,4 @@ class UserPermission(Base, TimestampMixin):
     )
 
     user = relationship("User", back_populates="permissions")
+

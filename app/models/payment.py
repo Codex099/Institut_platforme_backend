@@ -28,3 +28,4 @@ class Payment(Base, TimestampMixin):
     branch = relationship("Branch")
     receiver = relationship("User", foreign_keys=[received_by])
     canceller = relationship("User", foreign_keys=[cancelled_by])
+

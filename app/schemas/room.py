@@ -25,3 +25,4 @@ class RoomResponse(RoomBase):
 
     class Config:
         from_attributes = True
+

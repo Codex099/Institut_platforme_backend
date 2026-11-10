@@ -35,3 +35,4 @@ class StudentParent(Base, TimestampMixin):
     student = relationship("Student", back_populates="parent_links")
     parent = relationship("Parent", back_populates="student_links")
     validator = relationship("User", foreign_keys=[validated_by])
+

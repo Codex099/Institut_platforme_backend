@@ -41,3 +41,4 @@ class UnpaidBalanceItem(BaseModel):
     total_fee: condecimal(max_digits=12, decimal_places=2)
     paid_amount: condecimal(max_digits=12, decimal_places=2)
     remaining_balance: condecimal(max_digits=12, decimal_places=2)
+

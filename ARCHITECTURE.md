@@ -185,3 +185,4 @@ c:\Users\hafid\Desktop\myAPPS\projet freelance\ecole_chlef\BackEnd\
     ├── test_attendance.py          # Tests de pointage manuel et restrictions d'accès enseignant
     └── test_fund_transfers.py      # Tests du cycle de vie des remises de fonds et soldes de caisse
 ```
+

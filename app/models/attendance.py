@@ -26,3 +26,4 @@ class Attendance(Base, TimestampMixin):
     student = relationship("Student", back_populates="attendance_records")
     recorder = relationship("User", foreign_keys=[recorded_by])
     modifier = relationship("User", foreign_keys=[modified_by])
+

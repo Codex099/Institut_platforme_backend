@@ -18,3 +18,4 @@ class AuditLog(Base):
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False, index=True)
 
     user = relationship("User", foreign_keys=[user_id])
+

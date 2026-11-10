@@ -25,3 +25,4 @@ class User(Base, TimestampMixin, SoftDeleteMixin):
     teacher_profile = relationship("Teacher", back_populates="user", uselist=False, cascade="all, delete-orphan")
     student_profile = relationship("Student", back_populates="user", uselist=False)
     parent_profile = relationship("Parent", back_populates="user", uselist=False, cascade="all, delete-orphan")
+

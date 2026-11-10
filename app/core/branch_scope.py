@@ -97,3 +97,4 @@ def get_branch_scope(
         is_global=False,
         selected_branch_id=branch_id or (allowed[0] if len(allowed) == 1 else None),
     )
+

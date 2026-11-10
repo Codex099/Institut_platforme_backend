@@ -23,3 +23,4 @@ class Group(Base, TimestampMixin, SoftDeleteMixin):
     enrollments = relationship("Enrollment", back_populates="group", cascade="all, delete-orphan")
     schedule_slots = relationship("ScheduleSlot", back_populates="group", cascade="all, delete-orphan")
     sessions = relationship("ClassSession", back_populates="group", cascade="all, delete-orphan")
+
