@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, conint
+from pydantic import ConfigDict, BaseModel, conint
 
 
 class RoomBase(BaseModel):
@@ -23,6 +23,5 @@ class RoomResponse(RoomBase):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 

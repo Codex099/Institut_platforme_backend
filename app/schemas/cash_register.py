@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, condecimal
+from pydantic import ConfigDict, BaseModel, condecimal
 
 
 class CashRegisterCreate(BaseModel):
@@ -17,8 +17,7 @@ class CashRegisterResponse(BaseModel):
     balance: condecimal(max_digits=12, decimal_places=2)
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class CashMovementResponse(BaseModel):
@@ -32,6 +31,5 @@ class CashMovementResponse(BaseModel):
     created_by: Optional[int] = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 

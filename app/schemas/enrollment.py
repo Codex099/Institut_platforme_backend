@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from typing import Optional
-from pydantic import BaseModel, EmailStr, condecimal, conint
+from pydantic import ConfigDict, BaseModel, EmailStr, condecimal, conint
 
 
 class EnrollmentBase(BaseModel):
@@ -69,6 +69,5 @@ class EnrollmentResponse(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 

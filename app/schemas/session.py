@@ -1,6 +1,6 @@
 from datetime import date, datetime, time
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 
 class ClassSessionBase(BaseModel):
@@ -60,6 +60,5 @@ class ClassSessionResponse(ClassSessionBase):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 

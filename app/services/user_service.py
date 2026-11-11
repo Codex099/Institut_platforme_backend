@@ -55,6 +55,24 @@ class UserService:
         db.add(user)
         db.flush()
 
+        # Auto-provision teacher profile if role is teacher
+        if user.role == "teacher" and user.branch_id:
+            from decimal import Decimal
+            from app.models.teacher import Teacher
+            teacher_prof = Teacher(
+                user_id=user.id,
+                branch_id=user.branch_id,
+                phone=user.phone,
+                pay_mode="hourly",
+                pay_rate=Decimal("0.00"),
+            )
+            db.add(teacher_prof)
+
+        # Auto-provision cash register if role is agent
+        if user.role == "agent" and user.branch_id:
+            from app.services.cash_service import cash_service
+            cash_service.get_or_create_user_register(db, user.branch_id, user.id, user.full_name)
+
         audit_service.log(
             db=db,
             action="create_user",

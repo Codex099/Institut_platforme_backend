@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, condecimal
+from pydantic import ConfigDict, BaseModel, condecimal
 
 
 class PaymentCreate(BaseModel):
@@ -29,8 +29,7 @@ class PaymentResponse(BaseModel):
     cancel_reason: Optional[str] = None
     cancelled_at: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class UnpaidBalanceItem(BaseModel):

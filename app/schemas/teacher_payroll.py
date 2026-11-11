@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from typing import Optional
-from pydantic import BaseModel, condecimal
+from pydantic import ConfigDict, BaseModel, condecimal
 
 
 class TeacherPayrollCalculateRequest(BaseModel):
@@ -30,6 +30,5 @@ class TeacherPayrollResponse(BaseModel):
     notes: Optional[str] = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 

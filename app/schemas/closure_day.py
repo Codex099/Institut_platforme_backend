@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from typing import Optional
-from pydantic import BaseModel, model_validator
+from pydantic import ConfigDict, BaseModel, model_validator
 
 
 class ClosureDayBase(BaseModel):
@@ -35,6 +35,5 @@ class ClosureDayResponse(ClosureDayBase):
     created_by: Optional[int] = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 

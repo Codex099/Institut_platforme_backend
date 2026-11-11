@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, condecimal
+from pydantic import ConfigDict, BaseModel, condecimal
 
 
 class TeacherBase(BaseModel):
@@ -32,6 +32,5 @@ class TeacherResponse(TeacherBase):
     user_email: Optional[str] = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 

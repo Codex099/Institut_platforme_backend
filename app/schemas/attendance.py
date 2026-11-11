@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 
 class AttendanceRecordItem(BaseModel):
@@ -34,6 +34,5 @@ class AttendanceResponse(BaseModel):
     modified_by: Optional[int] = None
     modified_at: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
