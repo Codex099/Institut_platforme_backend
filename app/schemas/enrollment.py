@@ -43,7 +43,7 @@ class PublicPreregistrationRequest(BaseModel):
     birth_date: Optional[date] = None
     gender: Optional[str] = None
     phone: str
-    email: Optional[EmailStr] = None
+    email: EmailStr  # Email obligatoire, confirmé préalablement par code OTP
     address: Optional[str] = None
     # Parent details if minor
     parent_full_name: Optional[str] = None

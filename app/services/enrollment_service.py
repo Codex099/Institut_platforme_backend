@@ -243,6 +243,15 @@ class EnrollmentService:
         """Handle public website candidate registration and group reservation."""
         now = datetime.now(timezone.utc)
 
+        # 0. Vérification obligatoire de l'email via code OTP
+        from app.services.otp_service import otp_service
+        clean_email = data.email.lower().strip()
+        if not otp_service.is_email_verified(db, clean_email, purpose="preregistration"):
+            raise BadRequestError(
+                message_key="validation_error",
+                details="L'adresse email doit être confirmée par code OTP avant de valider la préinscription.",
+            )
+
         # 1. Lock group
         group = db.query(Group).filter(Group.id == data.group_id, Group.is_archived.is_(False)).with_for_update().first()
         if not group:
@@ -271,11 +280,16 @@ class EnrollmentService:
                 birth_date=data.birth_date,
                 gender=data.gender,
                 phone=data.phone,
+                email=clean_email,
                 address=data.address,
                 status="candidate",
             )
             db.add(student)
             db.flush()
+        else:
+            if not student.email:
+                student.email = clean_email
+                db.flush()
 
         # 3. Create provisional reservation
         level = db.query(Level).filter(Level.id == group.level_id).first()
@@ -297,6 +311,8 @@ class EnrollmentService:
             creator_role="public",
             ip_address=ip_address,
         )
+        # Consommer le code OTP validé
+        otp_service.consume_verification(db, clean_email, purpose="preregistration")
         return enrollment
 
     @classmethod

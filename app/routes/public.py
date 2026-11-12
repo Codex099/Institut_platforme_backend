@@ -18,8 +18,10 @@ from app.schemas.course import CourseResponse
 from app.schemas.document import DocumentResponse
 from app.schemas.enrollment import EnrollmentResponse, PublicPreregistrationRequest
 from app.schemas.group import GroupAvailabilityResponse
+from app.schemas.otp import OtpStatusResponse, SendOtpRequest, VerifyOtpRequest
 from app.services.document_service import document_service
 from app.services.enrollment_service import enrollment_service
+from app.services.otp_service import otp_service
 
 router = APIRouter(prefix="/public", tags=["Public Portal"])
 
@@ -123,4 +125,29 @@ def track_preregistration_status(reference: str, db: Session = Depends(get_db)):
     if not enr:
         raise NotFoundError(message_key="enrollment_not_found")
     return enr
+
+
+@router.post("/otp/send", response_model=OtpStatusResponse)
+def send_otp_code(data: SendOtpRequest, db: Session = Depends(get_db)):
+    """Envoie un code de confirmation à 6 chiffres par email via Brevo."""
+    otp_service.send_otp(db, email=data.email, purpose=data.purpose or "preregistration")
+    return OtpStatusResponse(
+        code="SUCCESS",
+        message="Code de vérification envoyé avec succès à votre adresse email.",
+        email=data.email,
+        is_verified=False,
+    )
+
+
+@router.post("/otp/verify", response_model=OtpStatusResponse)
+def verify_otp_code(data: VerifyOtpRequest, db: Session = Depends(get_db)):
+    """Vérifie la validité du code OTP saisi par l'élève."""
+    otp_service.verify_otp(db, email=data.email, otp_code=data.otp_code, purpose=data.purpose or "preregistration")
+    return OtpStatusResponse(
+        code="SUCCESS",
+        message="Adresse email confirmée avec succès.",
+        email=data.email,
+        is_verified=True,
+    )
+
 

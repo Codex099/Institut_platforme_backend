@@ -15,6 +15,7 @@ class Student(Base, TimestampMixin, SoftDeleteMixin):
     birth_date = Column(Date, nullable=True)
     gender = Column(String(20), nullable=True)
     phone = Column(String(50), nullable=True)
+    email = Column(String(180), nullable=True, index=True)
     address = Column(String(255), nullable=True)
     photo_document_id = Column(Integer, ForeignKey("documents.id", ondelete="SET NULL"), nullable=True)
     status = Column(String(30), default="candidate", nullable=False, index=True)  # candidate / active / archived

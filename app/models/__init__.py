@@ -26,6 +26,7 @@ from app.models.contact_message import ContactMessage
 from app.models.audit_log import AuditLog
 from app.models.import_job import ImportJob
 from app.models.setting import Setting
+from app.models.otp import EmailVerification
 
 __all__ = [
     "Branch",
@@ -59,5 +60,6 @@ __all__ = [
     "AuditLog",
     "ImportJob",
     "Setting",
+    "EmailVerification",
 ]
 

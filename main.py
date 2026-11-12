@@ -77,9 +77,9 @@ def check_and_init_db():
 
     print("\n" + "-" * 65)
     print("🚀 Serveur pret a demarrer :")
-    print("   👉 Swagger UI Docs : http://127.0.0.1:8000/docs")
-    print("   👉 ReDoc Docs      : http://127.0.0.1:8000/redoc")
-    print("   👉 Health Check    : http://127.0.0.1:8000/health")
+    print(f"   👉 Swagger UI Docs : http://{settings.SERVER_HOST}:{settings.SERVER_PORT}/docs")
+    print(f"   👉 ReDoc Docs      : http://{settings.SERVER_HOST}:{settings.SERVER_PORT}/redoc")
+    print(f"   👉 Health Check    : http://{settings.SERVER_HOST}:{settings.SERVER_PORT}/health")
     print("-" * 65 + "\n")
 
 
@@ -87,9 +87,9 @@ def main():
     check_and_init_db()
     uvicorn.run(
         "app.main:app",
-        host="127.0.0.1",
-        port=8000,
-        reload=True,
+        host=settings.SERVER_HOST,
+        port=settings.SERVER_PORT,
+        reload=settings.DEBUG,
         log_level="info",
     )
 

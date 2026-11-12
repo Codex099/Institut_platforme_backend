@@ -25,6 +25,9 @@ Ce document décrit l'architecture globale du backend, les conventions, et l'arb
 
 ```text
 c:\Users\hafid\Desktop\myAPPS\projet freelance\ecole_chlef\BackEnd\
+├── main.py                         # Lanceur direct à la racine (python main.py)
+├── run.py                          # Script de démarrage avec vérification DB et seed initial
+├── start.bat                       # Script batch Windows pour lancement en 1 clic
 ├── ARCHITECTURE.md                 # Vue d'ensemble du projet et inventaire des composants
 ├── requirements.txt                # Dépendances Python du projet
 ├── .env.example                    # Modèle des variables d'environnement requises
@@ -81,7 +84,8 @@ c:\Users\hafid\Desktop\myAPPS\projet freelance\ecole_chlef\BackEnd\
 │   │   ├── contact_message.py      # Messages reçus via le formulaire de contact du site public
 │   │   ├── audit_log.py            # Journal d'audit immuable des actions sensibles
 │   │   ├── import_job.py           # Suivi des travaux d'importation Excel (validation, prévisualisation, commit)
-│   │   └── setting.py              # Paramètres configurables (délais de réservation, politique salle, etc.)
+│   │   ├── setting.py              # Paramètres configurables (délais de réservation, politique salle, etc.)
+│   │   └── otp.py                  # Table email_verifications pour les codes OTP envoyés par email
 │   │
 │   ├── schemas/                    # Schémas de validation et de sérialisation Pydantic v2
 │   │   ├── __init__.py             # Export des schémas Pydantic
@@ -114,7 +118,8 @@ c:\Users\hafid\Desktop\myAPPS\projet freelance\ecole_chlef\BackEnd\
 │   │   ├── contact_message.py      # Schémas messages de contact public
 │   │   ├── audit_log.py            # Schémas journal d'audit
 │   │   ├── import_job.py           # Schémas import Excel (upload, preview, commit, report)
-│   │   └── setting.py              # Schémas paramètres applicatifs
+│   │   ├── setting.py              # Schémas paramètres applicatifs
+│   │   └── otp.py                  # Schémas envoi et vérification code OTP Brevo
 │   │
 │   ├── services/                   # Couche logique métier pure
 │   │   ├── __init__.py             # Export des services
@@ -136,12 +141,14 @@ c:\Users\hafid\Desktop\myAPPS\projet freelance\ecole_chlef\BackEnd\
 │   │   ├── import_service.py       # Import Excel en 3 phases (validation, prévisualisation, commit transactionnel)
 │   │   ├── export_service.py       # Export des données tabulaires au format Excel (openpyxl) et rapports PDF
 │   │   ├── report_service.py       # Synthèse des indicateurs opérationnels, de présence et financiers
+│   │   ├── email_service.py        # Intégration API Brevo (Sendinblue) pour l'envoi d'emails transactionnels
+│   │   ├── otp_service.py          # Gestion du cycle de vie des codes OTP (génération, expiration, validation)
 │   │   └── scheduler.py            # Ordonnanceur APScheduler (expiration des réservations toutes les 5 min, rappels)
 │   │
 │   ├── routes/                     # Contrôleurs d'API REST (/api/v1)
 │   │   ├── __init__.py             # Enregistrement et agrégation de l'ensemble des routeurs
 │   │   ├── auth.py                 # Authentification (/auth/login, refresh, logout, me, change-password)
-│   │   ├── public.py               # Endpoints ouverts (branches, catalogue, disponibilités, contact, préinscriptions)
+│   │   ├── public.py               # Endpoints ouverts (branches, catalogue, disponibilités, contact, OTP Brevo, préinscriptions)
 │   │   ├── branches.py             # CRUD et administration des branches
 │   │   ├── users.py                # Gestion des utilisateurs, rôles et réinitialisation de mot de passe
 │   │   ├── permissions.py          # Gestion des permissions personnalisées et des accès inter-branches
